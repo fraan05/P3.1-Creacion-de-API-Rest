@@ -40,7 +40,36 @@ def crear_coche(coche: CocheCreate):
     coches_db.append(nuevo_coche)
     return nuevo_coche
 
+# Consultar coches ---------------------
 @app.get("/coches", response_model=List[Coche])
 def obtener_coches():
     return coches_db
 
+# Consultar coche por ID ---------------------
+@app.get("/coches/{coche_id}", response_model=Coche)
+def obtener_coche(coche_id: int):
+    for c in coches_db:
+        if c.id == coche_id:
+            return c
+    raise HTTPException(status_code=404, detail="Coche no encontrado")
+
+# Actualizar coche ---------------------
+@app.put("/coches/{coche_id}", response_model=Coche)
+def actualizar_coche(coche_id: int, datos: CocheCreate):
+    for index, c in enumerate(coches_db):
+        if c.id == coche_id:
+            coches_db[index] = Coche(
+                id=coche_id,
+                **datos.model_dump()
+            )
+            return coches_db[index]
+    raise HTTPException(status_code=404, detail="Coche no encontrado")
+
+# Eliminar coche ---------------------
+@app.delete("/coches/{coche_id}", status_code=204)
+def eliminar_coche(coche_id: int):
+    for index, c in enumerate(coches_db):
+        if c.id == coche_id:
+            coches_db.pop(index)
+            return
+    raise HTTPException(status_code=404, detail="Coche no encontrado")

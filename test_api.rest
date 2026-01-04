@@ -1,0 +1,29 @@
+### Crear Coche
+POST http://127.0.0.1:8000/coches
+Content-Type: application/json
+
+{
+  "marca": "Honda",
+  "modelo": "Civic Type R",
+  "año": 2020,
+  "precio": 20000.0,
+  "disponible": true
+}
+
+### Obtener todos los coches
+GET http://127.0.0.1:8000/coches
+
+###
+
+### Obtener coches por ID
+GET http://127.0.0.1:8000/coches/1
+
+###
+
+### Error coche inexistente
+GET http://127.0.0.1:8000/coches/99
+
+###
+
+### Eliminar coche
+DELETE http://127.0.0.1:8000/coches/1
