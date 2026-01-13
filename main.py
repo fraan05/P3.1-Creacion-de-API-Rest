@@ -5,7 +5,7 @@ from typing import List
 app = FastAPI(title="API de Coches")
 
 # MODELOS ---------------------
-
+# definicion del modelo
 class CocheBase(BaseModel):
     marca: str = Field(..., min_length=1)
     modelo: str = Field(..., min_length=1)
@@ -19,6 +19,7 @@ class CocheCreate(CocheBase):
 class Coche(CocheBase):
     id: int
 
+#almcacenar datos en memoria
 coches_db: List[Coche] = []
 contador_id = 1
 

@@ -10,6 +10,18 @@ Content-Type: application/json
   "disponible": true
 }
 
+### Crear coche 2
+POST http://127.0.0.1:8000/coches
+Content-Type: application/json
+
+{
+  "marca": "Mitsubishi",
+  "modelo": "Pajero",
+  "año": 2018,
+  "precio": 15000,
+  "disponible": false
+}
+
 ### Obtener todos los coches
 GET http://127.0.0.1:8000/coches
 
