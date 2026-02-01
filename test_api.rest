@@ -22,6 +22,18 @@ Content-Type: application/json
   "disponible": false
 }
 
+### Crear coche 3 erroneo
+POST http://127.0.0.1:8000/coches
+Content-Type: application/json
+
+{
+  "marca": "M",
+  "modelo": "P",
+  "año": 1899,
+  "precio": -1000,
+  "disponible": false
+}
+
 ### Obtener todos los coches
 GET http://127.0.0.1:8000/coches
 
